@@ -60,6 +60,46 @@ public class LL {
         Node node = new Node(val , temp.next);
         temp.next=node;
      }
+     public int deleteAtFirst(){
+        int val= head.value;
+        if(head==null){
+            tail=null;
+        }
+        head=head.next;
+        size--;
+        return val;
+     }
+
+     public int deleteAtLast(){
+        Node temp = head ;
+        for(int i = 1 ; i<size;i++){
+            temp = temp.next;
+        }
+        int val = temp.next.value;
+        temp.next=null;
+        size--;
+        return val;
+     }
+
+     public int deleteAtIndex(int idx){
+        if(idx==0){
+            deleteAtFirst();
+        }
+        if(idx==size){
+            deleteAtLast();
+        }
+        Node temp = head;
+        for(int i = 1; i< idx ; i++){
+            temp =  temp.next;
+        }
+        int val = temp.next.value;
+        temp.next=temp.next.next;
+        size--;
+        return val;
+
+
+
+     }
 
     public void display(){
         Node temp = head;
@@ -67,7 +107,7 @@ public class LL {
             System.out.print(temp.value + "->");
             temp = temp.next;
         }
-        System.out.print("End");
+        System.out.println("End");
     }
 
 
